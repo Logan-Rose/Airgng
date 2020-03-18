@@ -1,0 +1,17 @@
+#main{
+  top: 30%;
+  padding: 25px;
+  border-style: solid;
+  border-color: black;
+  background-color: salmon;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body{
+	background-color: #FFC1B4;
+	display: flex;
+  	flex-wrap: wrap;
+  	align-content: center;
+}
