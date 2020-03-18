@@ -12,6 +12,6 @@
 body{
 	background-color: #FFC1B4;
 	display: flex;
-  	flex-wrap: wrap;
-  	align-content: center;
+  flex-wrap: wrap;
+  align-content: center;
 }

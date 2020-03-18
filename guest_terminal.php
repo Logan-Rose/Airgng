@@ -1,8 +1,10 @@
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Student Database</title>
-</head>
+	<head>
+	  <link rel="stylesheet" href="home.css">
+	</head>
+
+
+
 <?php
 	session_start();
 	if (isset( $_POST['login'] ))
@@ -36,14 +38,14 @@
 		pg_close($dbconn);
 	}
 ?>
-<body>
-	<div id="header"> USER LOGIN FORM</div>
-	<form method="POST" action="">
-		<p>Student #: <input type="text" name="studentnum" id="studentnum"/></p>
-		<p>Password: <input type="password" name="userpassword" id="userpassword" /></p>
-		<p><input type="submit" value="login" name="login" /></p>
-	</form>
-	<a href="register.php">Register</a>
 
-</body>
+	<body>
+
+		<div id="main">
+			
+		</div>
+
+
+	</body>
+
 </html>
