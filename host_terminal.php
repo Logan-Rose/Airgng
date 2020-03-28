@@ -21,12 +21,12 @@
 				}
 			?>
 			<br>
-			<a href="createbooking.php">
-				<button id ="menuButton" type="button">Book a stay</button>
+			<a href="createlisting.php">
+				<button type="button">Create a listing</button>
 			</a>
 			<br>
 			<a href="View.html">
-				<button id ="menuButton" type="button">View Bookings</button>
+				<button type="button">View Bookings</button>
 			</a>
 		</div>
 
