@@ -16,7 +16,7 @@
 			$dob = $_POST['dob'];
 			$acctype = $_POST['type'];
 
-			$conn_string = "host=web0.eecs.uottawa.ca port = 15432 dbname=lrose039 user=lrose039 password =1Logic145carrots5";
+			$conn_string = "host=web0.eecs.uottawa.ca port = 15432 dbname=lrose039 user=lrose039 password =";
 			$dbconn = pg_connect($conn_string) or die('Connection failed');
 
 			$query = "INSERT INTO users(last_name,first_name,pass,street,city,email, dob, acctype) VALUES ('$last_name','$first_name','$password','$street','$city','$email', '$dob', '$acctype')";
