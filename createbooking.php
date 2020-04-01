@@ -1,7 +1,13 @@
 <html>
 	<head>
-	  <link rel="stylesheet" href="home.css">
+	  <link rel="stylesheet" href="home1.css">
 	</head>
+	<script type="text/javascript">
+		function book(id) {
+			alert(id);
+		}
+	</script>
+
 
 	<body>
 
@@ -15,27 +21,59 @@
 
 				$q = "SELECT * FROM property";
 
+
 				$stmt = pg_prepare($dbconn,"pt",$q);
 				$result = pg_query($dbconn,$q);
 
-				echo "<table id='resultSet'>";
-				while($row = pg_fetch_row($result)){   //Creates a loop to loop through results
+				$i = 0;
+				echo "<table id='resultable'>
+				<thead>
+					<th id='resultheader'>
+						Image	
+					</th>
+					<th id='resultheader'>
+						ID	
+					</th>
+					<th id='resultheader'>
+					Address	
+					</th>
+					<th id='resultheader'>
+						Property Type
+					</th>
+					<th id='resultheader'>
+						Room Type
+					</th>
+					<th id='resultheader'>
+						Amenities
+					</th>
+					<th id='resultheader'>
+						Number of Bathrooms
+					</th>
+				</thead>
+				<tbody>"
+				;
+				while($row = pg_fetch_row($result)){  
+				 //Creates a loop to loop through results
+					$im = "SELECT image FROM property_image WHERE  property_id = ${row[0]}";
+					$res = pg_query($dbconn,$im);
 					echo 
-					"<tr id='resultSet'><td id='resultSet'>" . $row[0] .
-					"</td><td id='resultSet'>" . $row[1] . 
-					"</td><td id='resultSet'>" . $row[2] . 
-					"</td><td id='resultSet'>" . $row[3] . 
-					"</td><td id='resultSet'>" . $row[4] .
-					"</td><td id='resultSet'>" . $row[5] .
-					"</td><td id='resultSet'> <button onclick='book()' type='button'>Book</button></td></tr>";  //$row['index'] the index here is a field name
+					"<tr>
+						  <td id='resultimg'><img src = '/images/" . pg_fetch_result($res, 0)    .
+					"' heigt = '84' width = '84'/></td><td id='resultdata'>" . $row[0] .
+					"</td><td id='resultdata'>" . $row[1] . 
+					"</td><td id='resultdata'>" . $row[2] . 
+					"</td><td id='resultdata'>" . $row[3] . 
+					"</td><td id='resultdata'>" . $row[4] .
+					"</td><td id='resultdata'>" . $row[5] .
+					"</td><td id='resultdata'> <button type =\"button\" id = '${i}'onclick='book(this.id)'>Book</button></td></tr>";  //$row['index'] the index here is a field name
+					$i++;
 				}
 
-				echo "</table>";
+				echo "</tbody></table>";
 
 			?>
 			<br>
 		</div>
-
 
 	</body>
 

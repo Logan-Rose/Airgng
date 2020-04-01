@@ -1,6 +1,6 @@
 <html>
 	<head>
-	  <link rel="stylesheet" href="home.css">
+	  <link rel="stylesheet" href="home1.css">
 	  <title>Register</title>
 	</head>
 
@@ -16,10 +16,13 @@
 			$dob = $_POST['dob'];
 			$acctype = $_POST['type'];
 
-			$conn_string = "host=web0.eecs.uottawa.ca port = 15432 dbname=lrose039 user=lrose039 password =";
+			$conn_string = "host=web0.eecs.uottawa.ca port = 15432 dbname=group_108 user=kdabb095 password = ";
 			$dbconn = pg_connect($conn_string) or die('Connection failed');
-
-			$query = "INSERT INTO users(last_name,first_name,pass,street,city,email, dob, acctype) VALUES ('$last_name','$first_name','$password','$street','$city','$email', '$dob', '$acctype')";
+			$q = 'SELECT * FROM users';
+			$r = pg_query($q);
+			$uid = pg_num_fields($r);
+			$uid++;
+			$query = "INSERT INTO users(last_name,first_name,pass,street,city,email, dob, acctype,user_id) VALUES ('$last_name','$first_name','$password','$street','$city','$email', '$dob', '$acctype','$uid')";
 
 			$result = pg_query($dbconn,$query);
 

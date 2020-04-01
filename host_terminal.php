@@ -1,6 +1,6 @@
 <html>
 	<head>
-	  <link rel="stylesheet" href="home.css">
+	  <link rel="stylesheet" href="home1.css">
 	</head>
 
 	<body>
@@ -10,8 +10,9 @@
 				session_start();
 				$mail = $_SESSION['mail'];
 				$conn_string = $_SESSION['connString'];
+				$first_name = $_SESSION['first_name'];
 				$dbconn = pg_connect($conn_string) or die('Connection failed');
-				$q = "SELECT first_name, acctype FROM users where email= '$mail'";
+				$q = "SELECT first_name, acctype FROM users where email= '$mail' AND first_name = '$first_name'";
 				$stmt = pg_prepare($dbconn,"pt",$q);
 				$result = pg_query($dbconn,$q);
 				
