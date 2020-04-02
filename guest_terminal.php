@@ -25,7 +25,7 @@
 				<button id ="menuButton" type="button">Book a stay</button>
 			</a>
 			<br>
-			<a href="View.html">
+			<a href="viewbooking.php">
 				<button id ="menuButton" type="button">View Bookings</button>
 			</a>
 		</div>

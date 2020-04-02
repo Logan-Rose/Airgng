@@ -16,7 +16,7 @@
 			$dob = $_POST['dob'];
 			$acctype = $_POST['type'];
 
-			$conn_string = "host=web0.eecs.uottawa.ca port = 15432 dbname=group_108 user=kdabb095 password = Kareem+1307960302";
+			$conn_string = "host=web0.eecs.uottawa.ca port = 15432 dbname=group_108 user=ihasa074 password = ";
 			$dbconn = pg_connect($conn_string) or die('Connection failed');
 			$q = 'SELECT * FROM users';
 			$r = pg_query($dbconn, $q);

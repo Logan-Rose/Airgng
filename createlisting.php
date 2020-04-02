@@ -25,7 +25,7 @@
 				<button type="button">Create a listing</button>
 			</a>
 			<br>
-			<a href="View.html">
+			<a href="viewproperty.php">
 				<button type="button">View Bookings</button>
 			</a>
 		</div>
