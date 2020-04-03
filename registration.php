@@ -15,14 +15,15 @@
 			$email = $_POST['email'];
 			$dob = $_POST['dob'];
 			$acctype = $_POST['type'];
+			$country = $_POST['country'];
 
-			$conn_string = "host=web0.eecs.uottawa.ca port = 15432 dbname=group_108 user=ihasa074 password = ";
+			$conn_string = "host=web0.eecs.uottawa.ca port = 15432 dbname=group_108 user=lrose039 password = 1Logic145carrots5";
 			$dbconn = pg_connect($conn_string) or die('Connection failed');
 			$q = 'SELECT * FROM users';
 			$r = pg_query($dbconn, $q);
 			$uid = pg_num_rows($r);
 			$uid++;
-			$query = "INSERT INTO users(last_name,first_name,pass,street,city,email, dob, acctype,user_id) VALUES ('$last_name','$first_name','$password','$street','$city','$email', '$dob', '$acctype','$uid')";
+			$query = "INSERT INTO users(last_name,first_name,pass,street,city,email, dob, acctype,user_id, country) VALUES ('$last_name','$first_name','$password','$street','$city','$email', '$dob', '$acctype','$uid', '$country')";
 
 			$result = pg_query($dbconn,$query);
 
@@ -67,11 +68,16 @@
 		<p> <label for="dob">Date of birth:</label>
 				<input name="dob" type="date" id="dob"/>
 		</p>
+		<p> <label for="country">Country:</label>
+				<input name="country" type="text" id="country"/>
+		</p>
 			<tr>
 				<input type="radio" id="guest" name="type" value="guest">
 				<label for="guest">Guest</label>
 				<input type="radio" id="host" name="type" value="host">
 				<label for="host">Host</label><br>
+				<input type="radio" id="host" name="type" value="employee">
+				<label for="host">Employee</label><br>
 			</tr>
 		<p><input type="submit" value="Register" name="save" /></p>
 	</form>

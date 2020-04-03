@@ -6,7 +6,7 @@
 	<body>
 		<?php
 			session_start();
-			$conn_string = "host=web0.eecs.uottawa.ca port = 15432 dbname=group_108 user=ihasa074 password = ";
+			$conn_string = "host=web0.eecs.uottawa.ca port = 15432 dbname=group_108 user=lrose039 password = 1Logic145carrots5";
 			$dbconn = pg_connect($conn_string) or die('Connection failed');
 			$mail = $_POST['email'];
 			$password = $_POST['password'];
@@ -28,6 +28,9 @@
 					exit();
 				} else if($row[0] =="host"){
 					header("Location: ./host_terminal.php");
+					exit();
+				} else if($row[0] =="employee"){
+					header("Location: ./employee_terminal.php");
 					exit();
 				}
 			}
