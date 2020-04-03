@@ -22,6 +22,7 @@
 
 
 			while ($row = pg_fetch_row($result)) {
+				$_SESSION['user_id'] = $row[2];
 				$_SESSION['first_name'] = $row[1];
 				if($row[0] =="guest"){
 					header("Location: ./guest_terminal.php");

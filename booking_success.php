@@ -4,7 +4,7 @@
   <p class="lead"><strong>Thank You!</strong>Your reservation has been successfully!</p>
   <hr>
   <p>
-    Return to terminal <a href="guest_terminal.php">Contact us</a>
+    Return to <a href="guest_terminal.php">terminal!</a>
   </p>
   <p class="lead">
     <a class="btn btn-primary btn-sm" href="viewbooking.php" role="button">Take a look!</a>
