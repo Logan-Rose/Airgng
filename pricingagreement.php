@@ -26,13 +26,14 @@
 
 			$result = pg_query($dbconn,$query);
 
-			if(!$result){
-				die("Error in SQL query:" .pg_last_error());
-			}
 
-		
-			header("Location: ./host_terminal.php");
-			exit();
+			if(!$result){
+				header("Location: ./listing_failure.php");
+				exit();
+			}else{
+				header("Location: ./listing_success.php");
+				exit();
+			}
 
 			pg_free_result($result);
 			pg_close($dbconn);

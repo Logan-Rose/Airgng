@@ -19,7 +19,9 @@
 
 				$dbconn = pg_connect($conn_string) or die('Connection failed');
 
-				$q = "SELECT * FROM property";
+				$q = "SELECT * 
+					  FROM property p 
+					  WHERE p.country = ";
 
 
 				$stmt = pg_prepare($dbconn,"pt",$q);
