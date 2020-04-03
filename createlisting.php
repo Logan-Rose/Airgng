@@ -12,6 +12,7 @@
 			$mail = $_SESSION['mail'];
 			$conn_string = $_SESSION['connString'];
 			$dbconn = pg_connect($conn_string) or die('Connection failed');
+
 			$q = "SELECT user_id FROM users where email= '$mail'";
 			$stmt = pg_prepare($dbconn,"pt",$q);
 			$result = pg_query($dbconn,$q);
@@ -34,19 +35,18 @@
 			$description = $_POST['desc'];
 
 
-			$conn_string = "host=web0.eecs.uottawa.ca port = 15432 dbname=group_108 user=lrose039 password = 1Logic145carrots5";
-			$dbconn = pg_connect($conn_string) or die('Connection failed');
-
 			$query = "INSERT INTO property(property_id, address, property_type, room_type, bathrooms, bedrooms, description, user_id) VALUES ('$pid','$address','$prop_type','$room_type','$baths','$beds', '$description', '$uid')";
 
 			$result = pg_query($dbconn,$query);
+
+			$_SESSION['pid'] = $pid;
 
 			if(!$result){
 				die("Error in SQL query:" .pg_last_error());
 			}
 
-			echo "Data Successfully Entered ". "<a href='home.html'>login now</a>";
-			header("Location: ./home.html");
+			echo "Data Successfully Entered ". "<a href='pricingagreement.php'></a>";
+			header("Location: ./pricingagreement.php");
 			exit();
 
 			pg_free_result($result);
