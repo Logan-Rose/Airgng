@@ -2,7 +2,18 @@
 	<head>
 	  <link rel="stylesheet" href="home1.css">
 	</head>
-
+		<style type="text/css">
+		.zoom{
+			padding: 10px;
+			transition: transform .2s;
+			width: 150px !importent;
+			height: 100px !importent;
+			margin: 0 auto; 
+		}
+		.zoom:hover{
+			transform: scale(1.25);
+		}
+		</style>
 	<body>
 
 		<div id="main" class="mainCenter">
@@ -14,10 +25,9 @@
 
 				$dbconn = pg_connect($conn_string) or die('Connection failed');
 
-				echo $uid;
 
 				$q = "SELECT *
-					  FROM booking b
+					  FROM booking b join property p on b.property_id = p.property_id 
 					  WHERE b.user_id = '$uid'";
 
 				$stmt = pg_prepare($dbconn,"pt",$q);
@@ -25,8 +35,15 @@
 
 				$i = 0;
 
-				echo "<table id='resultable'>
+				echo "
+				<table id='resultable'>
 				<thead>
+					<th>
+						Image
+					</th>
+					<th id='resultheader'>
+						Address
+					</th>
 					<th id='resultheader'>
 						Booking Date
 					</th>
@@ -37,13 +54,10 @@
 						Check Out Date
 					</th>
 					<th id='resultheader'>
+						Number of Guests
+					</th>
+					<th id='resultheader'>
 						Price
-					</th>
-					<th id='resultheader'>
-						Refund
-					</th>
-					<th id='resultheader'>
-						Status
 					</th>
 					<th id='resultheader'>
 						Cancel
@@ -53,20 +67,30 @@
 				;
 
 				while($row = pg_fetch_row($result)){  
-					echo "<tr>";
+					$im = "SELECT image FROM property_image WHERE  property_id = ${row[6]}";
+					$res = pg_query($dbconn,$im);
+					if (pg_affected_rows($res) == 0){
+						echo 
+						"<tr>
+						  <td id='resultimg'><img class = 'zoom' src = '/images/default.jpeg' heigt = '84' width = '84'/>";
+					}else{
+						echo 
+						"<tr>
+							  <td id='resultimg'><img class = 'zoom' src = '/images/" . pg_fetch_result($res, 0)    .
+						"' heigt = '84' width = '84'/></td>";
+					}
 
 					echo "
-					<td id='resultdata'>"		. $row[0] . 
-					"</td><td id='resultdata'>" . $row[1] . 
-					"</td><td id='resultdata'>" . $row[2] . 
-					"</td><td id='resultdata'>" . $row[3] . 
-					"</td><td id='resultdata'>" . $row[4] .
-					"</td><td id='resultdata'>" . $row[5] .
-					"</td><td id='resultdata'> <button type =\"button\" id = '${i}'>Cancel</button></td>"; 
+					<td id='resultdata'>"		. $row[9] . 
+					"</td><td id='resultdata'>"	. $row[2] . 
+					"</td><td id='resultdata'>" . $row[3] .
+					"</td><td id='resultdata'>" . $row[4] . 
+					"</td><td id='resultdata'>" . $row[7] .
+					"</td><td id='resultdata'>" . $row[5] . 
+					"</td><td id='resultdata'> <button type =\"button\" id = '${row[0]}'>Cancel</button></td>"; 
 
 					echo "</tr>";
 
-					$i++;
 				}
 				echo "</tbody></table>";
 

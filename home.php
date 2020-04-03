@@ -6,7 +6,7 @@
 	<body>
 		<?php
 			session_start();
-			$conn_string = "host=web0.eecs.uottawa.ca port = 15432 dbname=group_108 user=lrose039 password = 1Logic145carrots5";
+			$conn_string = "host=web0.eecs.uottawa.ca port = 15432 dbname=group_108 user=kdabb095 password = Kareem+1307960302";
 			$dbconn = pg_connect($conn_string) or die('Connection failed');
 			$mail = $_POST['email'];
 			$password = $_POST['password'];
@@ -15,8 +15,7 @@
 			
 			$_SESSION['mail'] = $mail;
 			$_SESSION['connString'] = $conn_string;
-
-			$query = "SELECT acctype, first_name FROM users where email= '$mail' and pass='$password'";
+			$query = "SELECT acctype, first_name, user_id FROM users where email= '$mail' and pass='$password'";
 			$stmt = pg_prepare($dbconn,"ps",$query);
 			$result = pg_query($dbconn,$query);
 

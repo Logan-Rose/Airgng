@@ -7,8 +7,8 @@
 		.zoom{
 			padding: 18px;
 			transition: transform .2s;
-			width: 150px;
-			height: 100px;
+			width: 150px !importent;
+			height: 100px !importent;
 			margin: 0 auto; 
 		}
 		.zoom:hover{
@@ -61,16 +61,24 @@
 				 //Creates a loop to loop through results
 					$im = "SELECT image FROM property_image WHERE  property_id = ${row[0]}";
 					$res = pg_query($dbconn,$im);
-					echo 
-					"<tr>
-						  <td id='resultimg'><img class = 'zoom' src = '/images/" . pg_fetch_result($res, 0)    .
-					"' heigt = '84' width = '84'/></td><td id='resultdata'>" . $row[0] .
-					"</td><td id='resultdata'>" . $row[1] . 
-					"</td><td id='resultdata'>" . $row[2] . 
-					"</td><td id='resultdata'>" . $row[3] . 
-					"</td><td id='resultdata'>" . $row[4] .
-					"</td><td id='resultdata'>" . $row[5] .
-					"</td><td id='resultdata'> <input type = 'submit' name = '${row[0]}' value= 'book'></td></tr>";  //$row['index'] the index here is a field name
+					if (pg_affected_rows($res) == 0){
+						echo 
+						"<tr>
+						  <td id='resultimg'><img class = 'zoom' src = '/images/default.jpeg' heigt = '84' width = '84'/>";
+					}else{
+						echo 
+						"<tr>
+							  <td id='resultimg'><img class = 'zoom' src = '/images/" . pg_fetch_result($res, 0)    .
+						"' heigt = '84' width = '84'/></td>";
+					}
+						echo"<td id='resultdata'>" . $row[0] .
+						"</td><td id='resultdata'>" . $row[1] . 
+						"</td><td id='resultdata'>" . $row[2] . 
+						"</td><td id='resultdata'>" . $row[3] . 
+						"</td><td id='resultdata'>" . $row[4] .
+						"</td><td id='resultdata'>" . $row[5] .
+						"</td><td id='resultdata'> <input type = 'submit' name = '${row[0]}' value= 'book'></td></tr>";  //$row['index'] the index here is a field name
+					
 				}
 
 				echo "</tbody></table> </FORM>";
