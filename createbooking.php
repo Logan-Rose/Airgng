@@ -2,14 +2,19 @@
 	<head>
 	  <link rel="stylesheet" href="home1.css">
 	</head>
-	<script type="text/javascript">
-		function book(id) {
-			alert(id);
-		}
-	</script>
-
-
 	<body>
+		<style type="text/css">
+		.zoom{
+			padding: 18px;
+			transition: transform .2s;
+			width: 150px;
+			height: 100px;
+			margin: 0 auto; 
+		}
+		.zoom:hover{
+			transform: scale(1.25);
+		}
+		</style>
 
 		<div id="main" class="mainCenter">
 			<?php
@@ -23,10 +28,10 @@
 
 
 				$stmt = pg_prepare($dbconn,"pt",$q);
-				$result = pg_query($dbconn,$q);
 
-				$i = 0;
-				echo "<table id='resultable'>
+				$result = pg_query($dbconn,$q);
+				echo "<FORM method = 'POST' action = '/viewlisting.php' id = 'form1'>
+				<table id='resultable'>
 				<thead>
 					<th id='resultheader'>
 						Image	
@@ -58,18 +63,17 @@
 					$res = pg_query($dbconn,$im);
 					echo 
 					"<tr>
-						  <td id='resultimg'><img src = '/images/" . pg_fetch_result($res, 0)    .
+						  <td id='resultimg'><img class = 'zoom' src = '/images/" . pg_fetch_result($res, 0)    .
 					"' heigt = '84' width = '84'/></td><td id='resultdata'>" . $row[0] .
 					"</td><td id='resultdata'>" . $row[1] . 
 					"</td><td id='resultdata'>" . $row[2] . 
 					"</td><td id='resultdata'>" . $row[3] . 
 					"</td><td id='resultdata'>" . $row[4] .
 					"</td><td id='resultdata'>" . $row[5] .
-					"</td><td id='resultdata'> <button type =\"button\" id = '${i}'onclick='book(this.id)'>Book</button></td></tr>";  //$row['index'] the index here is a field name
-					$i++;
+					"</td><td id='resultdata'> <input type = 'submit' name = '${row[0]}' value= 'book'></td></tr>";  //$row['index'] the index here is a field name
 				}
 
-				echo "</tbody></table>";
+				echo "</tbody></table> </FORM>";
 
 			?>
 			<br>

@@ -61,7 +61,3 @@ body{
   flex-wrap: wrap;
   align-content: center;
 }
-img:hover{
-  height: 80px;
-  width: 80px;
-}
