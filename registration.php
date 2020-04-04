@@ -16,8 +16,9 @@
 			$dob = $_POST['dob'];
 			$acctype = $_POST['type'];
 			$country = $_POST['country'];
+			
 
-			$conn_string = "host=web0.eecs.uottawa.ca port = 15432 dbname=group_108 user=lrose039 password = 1Logic145carrots5";
+			$conn_string = "host=web0.eecs.uottawa.ca port = 15432 dbname=group_108 user=kdabb095 password = Kareem+1307960302";
 			$dbconn = pg_connect($conn_string) or die('Connection failed');
 			$q = 'SELECT * FROM users';
 			$r = pg_query($dbconn, $q);
@@ -41,7 +42,7 @@
 		}
 	?>
 <body>
-	<form id="main" class="mainRight" method="POST" action="">
+<form id="main" class="mainRight" method="POST" action="">
 		<p> <label for="lastName">Last name:</label>
 				<input name="lastName" type="text" id="lastName"/>
 		</p>
@@ -61,15 +62,15 @@
 		<p> <label for="city">City:</label>
 				<input name="city" type="text" id="city"/>
 		</p>
+		<p> <label for="country">Country:</label>
+				<input name="country" type="text" id="country"/>
+		</p>
 
 		<p> <label for="email">Email:</label>
 				<input name="email" type="text" id="email"/>
 		</p>
 		<p> <label for="dob">Date of birth:</label>
 				<input name="dob" type="date" id="dob"/>
-		</p>
-		<p> <label for="country">Country:</label>
-				<input name="country" type="text" id="country"/>
 		</p>
 			<tr>
 				<input type="radio" id="guest" name="type" value="guest">
