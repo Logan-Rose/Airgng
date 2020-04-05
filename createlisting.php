@@ -28,7 +28,9 @@
 
 			$r = pg_query($dbconn, $q);
 			$pid = pg_fetch_row($r)[0];
-			echo $id;
+			if is_null($pid){
+				$pid = 1;
+			}
 
 
 			$pid++;
@@ -38,6 +40,8 @@
 			$im_name = "default.jpeg";
 			if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 				$im_name = basename($_FILES["fileToUpload"]["name"]);
+    		}else {
+        		$im_name = "default.jpeg";
     		}
 			$address = $_POST['address'];
 			$prop_type = $_POST['ptype'];

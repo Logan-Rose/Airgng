@@ -5,8 +5,11 @@
 
 	<body>
 		<?php
+		//THIS IS THE ONLY PLACE YOU NEED TO PUT UR USERNAME AND PASSWORD!!!!
+		$USER_USERNAME = "kdabb095";
+		$USER_PASSWORD = "";
 			session_start();
-			$conn_string = "host=web0.eecs.uottawa.ca port = 15432 dbname=group_108 user=kdabb095 password = Kareem+1307960302";
+			$conn_string = "host=web0.eecs.uottawa.ca port = 15432 dbname=group_108 user=".$USER_USERNAME." password = " .$USER_PASSWORD;
 			$dbconn = pg_connect($conn_string) or die('Connection failed');
 			$mail = $_POST['email'];
 			$password = $_POST['password'];
