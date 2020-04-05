@@ -28,7 +28,7 @@
 
 			$r = pg_query($dbconn, $q);
 			$pid = pg_fetch_row($r)[0];
-			if is_null($pid){
+			if (is_null($pid)){
 				$pid = 1;
 			}
 
