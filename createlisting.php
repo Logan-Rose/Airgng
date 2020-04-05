@@ -19,19 +19,25 @@
 				
 			$uid = pg_fetch_row($result)[0];
 
-			echo $uid;
 
-			$q = 'SELECT * FROM property';
+			$result = pg_query($dbconn, "SELECT country FROM users where email= '$mail'");
+			$country = pg_fetch_row($result)[0];
+			echo $country;
+
+			$q = "select max(property_id) from property";
+
 			$r = pg_query($dbconn, $q);
-			$pid = pg_num_rows($r);
+			$pid = pg_fetch_row($r)[0];
+			echo $id;
+
+
 			$pid++;
 
 			$target_dir =  __DIR__ . "/images/";
 			$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-			 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+			$im_name = "default.jpeg";
+			if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 				$im_name = basename($_FILES["fileToUpload"]["name"]);
-    		} else {
-        		$m_name = "default.jpeg";
     		}
 			$address = $_POST['address'];
 			$prop_type = $_POST['ptype'];
@@ -49,7 +55,7 @@
 			$qq = "INSERT INTO property_image(image_id, property_id, image) VALUES('$im_id','$pid', '$im_name')";
 			$im_query = pg_query($dbconn, $qq);
 
-			$query = "INSERT INTO property(property_id, address, property_type, room_type, bathrooms, bedrooms, description, user_id) VALUES ('$pid','$address','$prop_type','$room_type','$baths','$beds', '$description', '$uid')";
+			$query = "INSERT INTO property(property_id, address, property_type, room_type, bathrooms, bedrooms, description, user_id, country) VALUES ('$pid','$address','$prop_type','$room_type','$baths','$beds', '$description', '$uid', '$country')";
 
 			$result = pg_query($dbconn,$query);
 
