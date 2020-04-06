@@ -23,7 +23,7 @@
 	$numG = $_POST['numguests'];
 
 	// echo "T-id: " . $t_id ." Payment type: " . $payment_type ." Total price: " . $tot_price . " Uid: ".$_SESSION['user_id']. " Num_guests: ". $_POST['numguests'];
-	$q = "INSERT INTO payment(transaction_id, payment_type, amount, status, user_id) VALUES('$t_id', '$payment_type', '$tot_price', 1, '$uid')";
+	$q = "INSERT INTO payment(transaction_id, payment_type, amount, status, user_id, property_id) VALUES('$t_id', '$payment_type', '$tot_price', 1, '$uid', '$prop_id')";
 	$result = pg_query($dbconn,$q);
 	echo pg_last_error();
 

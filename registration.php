@@ -15,7 +15,8 @@
 			$email = $_POST['email'];
 			$dob = $_POST['dob'];
 			$acctype = $_POST['type'];
-			$country = $_POST['country'];
+			$country = $_POST['country']
+			$number = $_POST['number'];
 			
 
 			$conn_string = $_SESSION['connString'];
@@ -24,7 +25,7 @@
 			$r = pg_query($dbconn, $q);
 			$uid = pg_num_rows($r);
 			$uid++;
-			$query = "INSERT INTO users(last_name,first_name,pass,street,city,email, dob, acctype,user_id, country) VALUES ('$last_name','$first_name','$password','$street','$city','$email', '$dob', '$acctype','$uid', '$country')";
+			$query = "INSERT INTO users(last_name,first_name,pass,street,city,email, dob, acctype,user_id, country,phone) VALUES ('$last_name','$first_name','$password','$street','$city','$email', '$dob', '$acctype','$uid', '$country', '$number')";
 
 			$result = pg_query($dbconn,$query);
 
@@ -68,6 +69,9 @@
 
 		<p> <label for="email">Email:</label>
 				<input name="email" type="text" id="email"/>
+		</p>
+		<p> <label for="number">Phone Numbers:</label>
+				<input name="number" type="text" id="number"/>
 		</p>
 		<p> <label for="dob">Date of birth:</label>
 				<input name="dob" type="date" id="dob"/>
