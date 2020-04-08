@@ -17,7 +17,7 @@
 	$res1 = pg_query($dbconn, $q1);
 	$q2 = "delete from booking where property_id = $prop_id";
 	$res2 = pg_query($dbconn, $q2);
-	header("Location: ./employee_view_properties.php");
+	header("Location: ./host_terminal.php");
 	exit();
 ?>
 </body>
