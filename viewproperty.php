@@ -67,9 +67,10 @@
                     "</td><td id='resultdata'>" . $row[2] . 
                     "</td><td id='resultdata'>" . $row[3] . 
                     "</td><td id='resultdata'>" . $row[5] . 
-                    "</td><td id='resultdata'>" . $row[4] .
+                    "</td><td id='resultdata'>" . $row[4] ."
+                    </td><td><input type = 'submit' name = '${row[0]}' value= 'Delete'></td>"
                     "<tfoot><tr> <br></tr><td colspan = '1' scope = 'colgroup'> Description:</td> 
-                    <td colspan = '6' scope ='colgroup'>".$row[6]."</td></tfoot></td><td><input type = 'submit' name = '${row[0]}' value= 'Delete'></td>"; 
+                    <td colspan = '6' scope ='colgroup'>".$row[6]."</td></tfoot>"; 
                     echo "</tr>";
                 }
                 echo "</tbody></table></FORM>";
