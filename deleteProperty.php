@@ -13,7 +13,10 @@
 
 	$q = "delete from Property where property_id= $prop_id";
 	$result = pg_query($dbconn,$q);
-	$row = pg_fetch_row($result);
+	$q1 = "delete from pricing_agreement where property_id = $prop_id";
+	$res1 = pg_query($dbconn, $q1);
+	$q2 = "delete from booking where property_id = $prop_id";
+	$res2 = pg_query($dbconn, $q2);
 	header("Location: ./employee_view_properties.php");
 	exit();
 ?>
