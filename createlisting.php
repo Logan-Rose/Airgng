@@ -31,9 +31,8 @@
 			if (is_null($pid)){
 				$pid = 1;
 			}
-
-
 			$pid++;
+			$_SESSION['new_id'] = $pid;
 
 			$target_dir =  __DIR__ . "/images/";
 			$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
@@ -63,7 +62,7 @@
 
 			$result = pg_query($dbconn,$query);
 
-			$_SESSION['pid'] = $pid;
+			
 
 			if(!$result){
 				die("Error in SQL query:" .pg_last_error());

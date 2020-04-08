@@ -1,6 +1,6 @@
 <html>
 	<head>
-	  <link rel="stylesheet" href="home1.css">
+	  <link rel="stylesheet" href="home.css">
 	</head>
 
 	<body>
@@ -23,11 +23,15 @@
 			?>
 			<br>
 			<a href="createlisting.php">
-				<button type="button">Create a listing</button>
+				<button id ="menuButton" type="button">Create a listing</button>
 			</a>
 			<br>
 			<a href="viewproperty.php">
-				<button type="button">View Bookings</button>
+				<button id ="menuButton" type="button">View Bookings</button>
+			</a>
+			<br>
+			<a href="home.html">
+				<button id ="menuButton" type="button">Sign Out</button>
 			</a>
 		</div>
 

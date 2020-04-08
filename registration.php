@@ -1,6 +1,6 @@
 <html>
 	<head>
-	  <link rel="stylesheet" href="home1.css">
+	  <link rel="stylesheet" href="home.css">
 	  <title>Register</title>
 	</head>
 
@@ -15,17 +15,23 @@
 			$email = $_POST['email'];
 			$dob = $_POST['dob'];
 			$acctype = $_POST['type'];
-			$country = $_POST['country']
+			$country = $_POST['country'];
 			$number = $_POST['number'];
 			
 
-			$conn_string = $_SESSION['connString'];
+			$USER_USERNAME = "lrose039";
+			$USER_PASSWORD = "1Logic145carrots5";
+			$conn_string = "host=web0.eecs.uottawa.ca port = 15432 dbname=group_108 user=".$USER_USERNAME." password = " .$USER_PASSWORD;
 			$dbconn = pg_connect($conn_string) or die('Connection failed');
-			$q = 'SELECT * FROM users';
+			$q = "select max(user_id) from users";
+
 			$r = pg_query($dbconn, $q);
-			$uid = pg_num_rows($r);
+			$uid = pg_fetch_row($r)[0];
+			if (is_null($uid)){
+				$uid = 1;
+			}
 			$uid++;
-			$query = "INSERT INTO users(last_name,first_name,pass,street,city,email, dob, acctype,user_id, country,phone) VALUES ('$last_name','$first_name','$password','$street','$city','$email', '$dob', '$acctype','$uid', '$country', '$number')";
+			$query = "INSERT INTO users(last_name,first_name,pass,street,city,email, dob, acctype,user_id, country, phone) VALUES ('$last_name','$first_name','$password','$street','$city','$email', '$dob', '$acctype','$uid', '$country', '$number')";
 
 			$result = pg_query($dbconn,$query);
 
@@ -43,6 +49,11 @@
 		}
 	?>
 <body>
+
+		<video autoplay muted loop id="myVideo">
+		  <source src="clouds.mp4" type="video/mp4">
+		</video>
+
 <form id="main" class="mainRight" method="POST" action="">
 		<p> <label for="lastName">Last name:</label>
 				<input name="lastName" type="text" id="lastName"/>
@@ -70,7 +81,7 @@
 		<p> <label for="email">Email:</label>
 				<input name="email" type="text" id="email"/>
 		</p>
-		<p> <label for="number">Phone Numbers:</label>
+		<p> <label for="number">Phone Number:</label>
 				<input name="number" type="text" id="number"/>
 		</p>
 		<p> <label for="dob">Date of birth:</label>

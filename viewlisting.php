@@ -19,7 +19,7 @@
 		}
 	</script>
 	<body>
-		<div id = "image" class ='center'>
+		<div id="main" class="mainCenter">
 			<?php 
 				session_start();
 
@@ -41,9 +41,9 @@
 					"' >"; 
 					
 			?>
-		</div>
 
-		<div id="main" class="mainCenter">
+			<br>
+
 			<?php
 
 				echo "
@@ -103,55 +103,53 @@
 				}
 				$start_price = $rice * $min_stay; 
 				echo "<FORM method = 'POST' action = '/book.php' id = 'book'>
+				<table>
+					<thead>
+					<th>
+						Number of days:
+					</th>
+					<th>
+						Number of guests:
+					</th>
+					<th>
+						Payment type:
+					</th>
+					<th>
+						<p id = 'price'>
+							Price: \$$start_price
+						</p>
+					</th>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<select id = 'numdays' name = 'numdays' class ='ndays' onchange = 'newprice(this.selectedIndex, ${rice})'>";
+								for ($i=$min_stay; $i < 10 ; $i++) { 
+										echo "<option value = '$i'>$i</option>";
+									}	
+				echo			 "</select>
+							</td>
 
-
-<table>
-	<thead>
-	<th>
-		Number of days:
-	</th>
-	<th>
-		Number of guests:
-	</th>
-	<th>
-		Payment type:
-	</th>
-	<th>
-		<p id = 'price'>
-			Price: \$$start_price
-		</p>
-	</th>
-	</thead>
-	<tbody>
-		<tr>
-			<td>
-				<select id = 'numdays' name = 'numdays' class ='ndays' onchange = 'newprice(this.selectedIndex, ${rice})'>";
-				for ($i=$min_stay; $i < 10 ; $i++) { 
-						echo "<option value = '$i'>$i</option>";
-					}	
-echo			 "</select>
-			</td>
-
-			<td>
-				<select id = 'numguests' name = 'numguests' class ='nguests'>";
-				for ($i=1; $i <= $num_guests ; $i++) { 
-						echo "<option value = '$i'>$i</option>";
-					}	
-echo			 "</select>
-			</td>
-			<td>
-				<select id = 'payment' name = 'payment' class ='payment'>
-					<option value = 'Credit'>Credit</option>
-					<option value = 'Debit'>Debit</option>
-					<option value = 'DirDeposit'>Direct Deposit</option>
-				</select>
-			</td>
-			<td><input type = 'submit' name = '${row[0]}' value= 'book'>
-			</td>
-		</tr>
-	</tbody>
-</table>
-</FORM>"
+							<td>
+								<select id = 'numguests' name = 'numguests' class ='nguests'>";
+								for ($i=1; $i <= $num_guests ; $i++) { 
+										echo "<option value = '$i'>$i</option>";
+									}	
+				echo			 "</select>
+							</td>
+							<td>
+								<select id = 'payment' name = 'payment' class ='payment'>
+									<option value = 'Credit'>Credit</option>
+									<option value = 'Debit'>Debit</option>
+									<option value = 'DirDeposit'>Direct Deposit</option>
+								</select>
+							</td>
+							<td><input type = 'submit' name = '${row[0]}' value= 'book'>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				</FORM>"
 
 
 				;

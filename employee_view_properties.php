@@ -2,10 +2,9 @@
 	<head>
 	  <link rel="stylesheet" href="home1.css">
 	</head>
-	<body>
 		<style type="text/css">
 		.zoom{
-			padding: 18px;
+			padding: 10px;
 			transition: transform .2s;
 			width: 150px !importent;
 			height: 100px !importent;
@@ -16,6 +15,8 @@
 		}
 		</style>
 
+	<body>
+
 		<div id="main" class="mainCenter">
 			<?php
 				session_start();
@@ -24,41 +25,36 @@
 
 				$dbconn = pg_connect($conn_string) or die('Connection failed');
 
-				$q = "SELECT * from property prop join pricing_agreement pa on prop.property_id = pa.property_id";
-
+				$q = "SELECT * FROM property";
 
 				$stmt = pg_prepare($dbconn,"pt",$q);
-
 				$result = pg_query($dbconn,$q);
-				echo "<FORM method = 'POST' action = '/viewlisting.php' id = 'form1'>
+
+				echo "<FORM method = 'POST' action = '/deleteProperty.php' id = 'form1'>
 				<table id='resultable'>
 				<thead>
 					<th id='resultheader'>
 						Image	
 					</th>
 					<th id='resultheader'>
-						Address	
+					Address	
 					</th>
 					<th id='resultheader'>
-						Porpery Type
+						Property Type
 					</th>
 					<th id='resultheader'>
-						Number of Bedrooms
+						Room Type
+					</th>
+					<th id='resultheader'>
+						Amenities
 					</th>
 					<th id='resultheader'>
 						Number of Bathrooms
 					</th>
-					<th id='resultheader'>
-						Price per day
-					</th>
-					<th id='resultheader'>
-						Book Today!
-					</th>
+					<th id='resultheader'></th>
 				</thead>
-				<tbody>"
-				;
+				<tbody>";
 				while($row = pg_fetch_row($result)){  
-				 //Creates a loop to loop through results
 					$im = "SELECT image FROM property_image WHERE  property_id = ${row[0]}";
 					$res = pg_query($dbconn,$im);
 					if (pg_affected_rows($res) == 0){
@@ -71,20 +67,21 @@
 							  <td id='resultimg'><img class = 'zoom' src = '/images/" . pg_fetch_result($res, 0)    .
 						"' heigt = '84' width = '84'/></td>";
 					}
-						echo"<td id='resultdata'>" . $row[1] .
-						"</td><td id='resultdata'>" . $row[2] . 
-						"</td><td id='resultdata'>" . $row[5] . 
-						"</td><td id='resultdata'>" . $row[4] . 
-						"</td><td id='resultdata'>" . $row[10] .
-						"</td><td id='resultdata'> <input type = 'submit' name = '${row[0]}' value= 'book'></td></tr>";  //$row['index'] the index here is a field name
-					
+					echo  
+					"</td><td id='resultdata'>" . $row[1] . 
+					"</td><td id='resultdata'>" . $row[2] . 
+					"</td><td id='resultdata'>" . $row[3] .
+					"</td><td id='resultdata'>" . $row[4] .
+					"</td><td id='resultdata'>" . $row[5] .
+					"</td><td id='resultdata'> <input id='del' type = 'submit' name = '${row[0]}' value= 'X'></td></tr>";
 				}
 
-				echo "</tbody></table> </FORM>";
+				echo "</tbody></table>";			
 
 			?>
 			<br>
-			<a href="guest_terminal.php">
+
+			<a href="employee_terminal.php">
 				<button id ="menuButton" type="button">Terminal</button>
 			</a>
 		</div>

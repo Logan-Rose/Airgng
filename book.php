@@ -31,16 +31,20 @@
 		header("Location: ./payment_failed.php");
 		exit();
 	}
-	$qb_id = "SELECT * FROM booking";
-	$bres = pg_query($dbconn,$qb_id);
-	$b_id = pg_num_rows($bres);
+
+
+	$q = "select max(booking_id) from booking";
+	$r = pg_query($dbconn, $q);
+	$b_id = pg_fetch_row($r)[0];
+	if (is_null($uid)){
+		$b_id = 1;
+	}
 	$b_id++;
 	$date = date('d/m/Y');
 	// echo "b-id: " . $b_id ." Payment: " . $tot_price ." date: " . $date . " Uid: ".$_SESSION['user_id']. " Num_guests: ". $_POST['numguests'];
 	$qb = "INSERT INTO booking(booking_id, user_id, booking_date, checkin_date, checkout_date, price, property_id, num_guests) VALUES('$b_id', '$uid', '$date', '$date', '$date', $tot_price, $prop_id, $numG)"; 
 	$bres = pg_query($dbconn, $qb);
-
-	// echo pg_last_error();
+		// echo pg_last_error();
 	if(!$bres){
 			header("Location: ./booking_failed.php");
 			exit();
@@ -48,6 +52,7 @@
 			header("Location: ./booking_success.php");
 			exit();
 	}
+	
 ?>
 </body>
 </html>

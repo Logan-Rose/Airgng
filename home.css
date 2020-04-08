@@ -1,14 +1,27 @@
 #main{
-  top: 30%;
+  position: fixed;
+  margin-left: 50%;
+  left: -160px;
+  width: 320px;
+  margin-right: auto;
+  top: 25%;
   padding: 25px;
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 35px;
   border-style: solid;
   border-color: white;
-  background-color: #b8dfff;
   box-shadow: 0px 0px 20px white;
-  margin-left: auto;
-  margin-right: auto;
+
 }
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+
 
 .mainCenter{
    text-align: center;
@@ -45,6 +58,7 @@
 body{
   color: #000 !important;
   background:-webkit-linear-gradient(top,#64B5F6 10%,white 90%);
+  position: absolute;
   display: flex;
   flex-wrap: wrap;
   align-content: center;

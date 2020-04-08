@@ -10,8 +10,9 @@
 
 			session_start();
 			$mail = $_SESSION['mail'];
-			$pid = $_SESSION['pid'];
+			$pid = $_SESSION['new_id'];
 
+			echo $pid;
 			$conn_string = $_SESSION['connString'];
 			$dbconn = pg_connect($conn_string) or die('Connection failed');
 

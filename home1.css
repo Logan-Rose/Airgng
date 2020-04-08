@@ -17,6 +17,27 @@
    text-align: right;
 }
 
+#del{
+  width: 30px;
+  height: 30px;
+  color: white;
+  font-weight: bold;
+  background-color: red;
+  border-style: solid;
+  border-color: white;
+  border-radius: 20px;
+  transition-duration: 0.4s;
+  font-size: 14px;
+}
+
+#del:hover{
+  background-color: white;
+  color: red;
+  border-width: 1px;
+  border-style: solid;
+  border-color: red;
+}
+
 #resultable {
     color: #333;
     font-family: Helvetica, Arial, sans-serif;

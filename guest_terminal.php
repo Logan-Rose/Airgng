@@ -28,6 +28,10 @@
 			<a href="viewbooking.php">
 				<button id ="menuButton" type="button">View Bookings</button>
 			</a>
+			<br>
+			<a href="home.html">
+				<button id ="menuButton" type="button">Sign Out</button>
+			</a>
 		</div>
 
 

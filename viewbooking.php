@@ -96,6 +96,9 @@
 
 			?>
 			<br>
+			<a href="guest_terminal.php">
+				<button id ="menuButton" type="button">Terminal</button>
+			</a>
 		</div>
 
 	</body>
