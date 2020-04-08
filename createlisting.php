@@ -49,10 +49,10 @@
 			$beds = $_POST['numbeds'];
 			$description = $_POST['desc'];
 
-			$q_im = "SELECT * FROM property_image";
+			$q_im = "SELECT max(image_id) FROM property_image";
 			
 			$res_im = pg_query($dbconn, $q_im);
-			$im_id = pg_num_rows($res_im);
+			$im_id = pg_fetch_row($res_im)[0];
 			$im_id++;
 
 			$qq = "INSERT INTO property_image(image_id, property_id, image) VALUES('$im_id','$pid', '$im_name')";
