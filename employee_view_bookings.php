@@ -22,10 +22,10 @@
 				session_start();
 				$mail = $_SESSION['mail'];
 				$conn_string = $_SESSION['connString'];
-
+				$country = $_SESSION['country'];
 				$dbconn = pg_connect($conn_string) or die('Connection failed');
 
-				$q = "SELECT * FROM booking order by booking_id";
+				$q = "select * from booking B, users U where B.user_id = U.user_id and U.country= '$country' order by B.booking_id";
 
 				$stmt = pg_prepare($dbconn,"pt",$q);
 				$result = pg_query($dbconn,$q);

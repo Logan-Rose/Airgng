@@ -22,10 +22,11 @@
 				session_start();
 				$mail = $_SESSION['mail'];
 				$conn_string = $_SESSION['connString'];
+				$country = $_SESSION['country'];
 
 				$dbconn = pg_connect($conn_string) or die('Connection failed');
 
-				$q = "SELECT * FROM property";
+				$q = "select * from property P where P.country='$country' order by property_id ";
 
 				$stmt = pg_prepare($dbconn,"pt",$q);
 				$result = pg_query($dbconn,$q);
