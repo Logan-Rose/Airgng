@@ -19,8 +19,8 @@
 			$number = $_POST['number'];
 			
 
-			$USER_USERNAME = "lrose039";
-			$USER_PASSWORD = "1Logic145carrots5";
+			$USER_USERNAME = "";
+			$USER_PASSWORD = "";
 			$conn_string = "host=web0.eecs.uottawa.ca port = 15432 dbname=group_108 user=".$USER_USERNAME." password = " .$USER_PASSWORD;
 			$dbconn = pg_connect($conn_string) or die('Connection failed');
 			$q = "select max(user_id) from users";

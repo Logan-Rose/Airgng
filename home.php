@@ -5,9 +5,10 @@
 
 	<body>
 		<?php
-		//THIS IS THE ONLY PLACE YOU NEED TO PUT UR USERNAME AND PASSWORD!!!!
-		$USER_USERNAME = "lrose039";
-		$USER_PASSWORD = "1Logic145carrots5";
+		//THIS IS NOTTHE ONLY PLACE YOU NEED TO PUT UR USERNAME AND PASSWORD!!!!
+		//YOU ALSO HAVE TO PUT IT IN REGISTRATION, BECAUSE REGISTRATION IS NOT APART OF THE SESSION AND CANNOT USE SESSION VARIABLES
+		$USER_USERNAME = "";
+		$USER_PASSWORD = "";
 			session_start();
 			$conn_string = "host=web0.eecs.uottawa.ca port = 15432 dbname=group_108 user=".$USER_USERNAME." password = " .$USER_PASSWORD;
 			$dbconn = pg_connect($conn_string) or die('Connection failed');
