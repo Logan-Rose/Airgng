@@ -20,7 +20,7 @@
                 <col>
                 <col>
                 <colgroup span = '7'></colgroup>
-                <FORM method = 'POST' action = '/deleteProp-Host.php' id = 'form1'>
+                <FORM method = 'POST' action = '/host_delete.php' id = 'form1'>
                 <table id='resultable'>
                 <thead>
                     <th>
@@ -67,14 +67,17 @@
                     "</td><td id='resultdata'>" . $row[2] . 
                     "</td><td id='resultdata'>" . $row[3] . 
                     "</td><td id='resultdata'>" . $row[5] . 
-                    "</td><td id='resultdata'>" . $row[4] ."
-                    </td><td><input type = 'submit' name = '${row[0]}' value= 'Delete'></td>"
-                    "<tfoot><tr> <br></tr><td colspan = '1' scope = 'colgroup'> Description:</td> 
-                    <td colspan = '6' scope ='colgroup'>".$row[6]."</td></tfoot>"; 
+                    "</td><td id='resultdata'>" . $row[4] .
+                    "</td><td id='resultdata'>" . $row[6] .
+                    "</td><td id='resultdata'> <input id='del' type = 'submit' name = '${row[0]}' value= 'X'></td></tr>";
                     echo "</tr>";
                 }
                 echo "</tbody></table></FORM>";
             ?>
+
+            <a href="host_terminal.php">
+                <button id ="menuButton" type="button">Terminal</button>
+            </a>
             <br>
         </div>
     </body>
